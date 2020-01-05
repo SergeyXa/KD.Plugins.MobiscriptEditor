@@ -1,0 +1,209 @@
+﻿@VAR	allows to define a variable name and its value. @var (Variable name = 100)
+@DEC	designates the 2D catalog CAT2D_GENDEC in a model script. @DEC (RED = CHEV4X)
+@COMMENT	example @comment (Hello every body)
+@INTERFACE	allows a wizard to store its own information.
+@EXE	used to define an executable serving as a configurator.
+@DLL	allows to call the ObjectWizard () function of a dll.
+@URL	to call a url on a block in InSitu
+@2D	Name of a 2D to use: code of a block, name of a 2D entity or name of a wmf or dxf file.
+@3D	Name of a 3D to use: code of a block, name of a 3D entity or name of a dxf or 3ds file.
+@PRICE	Price allocation: @price (# 1 = 250), @price (BT80 = 250), @price (250).
+@CF	composition of facades. Useful for Schuler export. example @CF (1D1d) for 1 door with 1 drawer.
+@WIZARD	call to an Assistant / Configurator from the CLS_WIZDEF list.
+@POSSIBLE	Assembly rule.
+@IMPOSSIBLE	Assembly rule.
+@FORCE	Assembly rule.
+@LIEN	Assembly rule.
+@APPLICAT	Used to associate an AppliCat with the block. Example script: @APPLICAT (‘APPLICATCODE’)
+X	Position on the x-axis.
+Y	Position on the y-axis.
+Z	Position on the z-axis (altitude).
+L	Width.
+P	Depth.
+H	Height.
+SI	2D and 3D reversed.
+SP	Without feet (without details).
+T	Forcing the texture.
+DEC	Decor associated with the block. Example: DEC = VCLAIREVOIE.
+G	3D view drawn in left or left hardware only for a component.
+D	3D view drawn in straight hardware or for straight hardware only for a component.
+NF	Not billed for a component.
+LMIN	Minimum dimensions.
+PMIN	Minimum dimensions.
+HMIN	Minimum dimensions.
+LMAX	Maximum dimensions.
+PMAX	Maximum dimensions.
+HMAX	Maximum dimensions.
+NTC	The short text of the called block is not taken into account to build the short text.
+NTL	The long text of the called block is not taken into account to build the long text.
+N2D	The 2D of the called block is not taken into account to build the 2D of the block.
+N3D	The 3D of the called block is not taken into account to build the 3D of the block.
+TC	Name (short text). Also valid for a component.
+TL	Description (long text).
+IT	Combination of SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+II	Combination of SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+ID	Combination of SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+IG	Combination of SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+IA	Combination of SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+GT	Combination of SF_KEEP_LEFT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+GI	Combination of SF_KEEP_LEFT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+GD	Combination of SF_KEEP_LEFT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+GG	Combination of SF_KEEP_LEFT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+GA	Combination of SF_KEEP_LEFT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+DT	Combination of SF_KEEP_RIGHT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+DI	Combination of SF_KEEP_RIGHT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+DD	Combination of SF_KEEP_RIGHT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+DG	Combination of SF_KEEP_RIGHT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+DA	Combination of SF_KEEP_RIGHT | SF_ALTEREDFERRAGE | SF_LEFTFERRAGE | SF_RIGHTFERRAGE.
+CD	Requested components. Component dialog displayed during installation.
+SYMX	Symmetry L | R (on the x-axis).
+COMP	Compound object for Caisson + Façades for example.
+Q	Quantity for a component.
+PC	Front cutting depth in the case of a link with a linear plane.
+PCA	Front cutting depth in the case of a link with a corner plane.
+DF	Front overhang.
+DL	Lateral overhang.
+OZ	Angle in the Oxy plane (horizontal).
+OX	Angle in the Oyz plane.
+OY	Angle in the Ozx plane.
+PRICENB	Number of units in a package, the price given for a package.
+CL	No. of constants for width.
+CP	No. of constants for depth.
+CH	No. of constants for height.
+CA	No. of constants for angle.
+2D	Name of a 2D to use instead of that of the called block.
+3D	Name of a 3D to use instead of that of the called block.
+NONSEL	To remove the selectable component flag.
+QD	Quantity requested (at installation).
+@TF1	Facade texture 1 or Family texture or model 1.
+@TF2	Facade texture 2 or Family texture or model 2.
+@TT	Facade tower texture or Family texture or model 3.
+@TCE	Texture of exterior box or Texture of famile or model 4.
+@TCI	Interior box texture or Family texture or model 5.
+@TO1	Free texture 1.
+@TO2	Free texture 2.
+T2D	Forcing the texture for 2D only.
+TT	Texture type forcing.
+TT2D	Texture type forcing for 2D only.
+F	Closed drawn 3D view.
+O	Open drawn 3D view.
+NL	Not linked for a component.
+FINNH	Non-inherited finishes for a component.
+REQ	Required for a component.
+XD	Starting position for moving a component.
+YD	Starting position for moving a component.
+ZD	Starting position for moving a component.
+XF	End position for moving a component.
+YF	End position for moving a component.
+ZF	End position for moving a component.
+FIN	Finishing codes (used for installation). Ex: FIN = modelcode_pricelist; mc1; mc2; mc3; mc4; bc1; bc2. Also applicable to a component!
+CAT	Allows you to specify a catalog for an external component. Ex: CAT = Budo04e1: 1: 1. See BPT_CATALOG_FILE.
+S	S (selectable): block not taken into account if S = 0.
+AD	Assistant requested. Wizard dialog displayed during installation.
+AH	Angle of view of the 3D in the horizontal plane.
+AV	Angle of view of the 3D in the vertical plane.
+OA	Corner opening for 3D view.
+INTER	Type of component for the detailed nomenclature: overloading the name, the quantity and the definition of the direction of the wire.
+PANC	Type of component for the detailed nomenclature: box panel.
+PANF	Type of component for the detailed nomenclature: front panel.
+PROF	Type of component for the detailed nomenclature: profile.
+PIECE	Type of component for the detailed nomenclature: part.
+PROD	Type of component for the detailed nomenclature: product by volume.
+MO	Type of component for the detailed nomenclature: labor.
+SSENS	Type of component for the detailed nomenclature: subset of other constituents.
+FILL	Component wire direction for detailed BOM: length
+FILP	Component wire direction for detailed nomenclature: depth.
+TITRE	The block is a title in the list of components.
+@TM6	Family or pattern texture 6.
+@TM7	Family or pattern texture 7.
+@TM8	Family or pattern texture 8.
+NBPGNP	Number of door handles in the base unit.
+NBPGNT	Number of base block drawer handles.
+GAB	Template. Example: GAB = 1 / 2L + 10, P, 0; 1 / 2-10, P, 0; ...
+ALTDES	Drawing altitude.
+MARQ	Markable.
+NMARQ	Unmarkable.
+ALTAUTO	Automatic altitude.
+HUNIQ	Automatic anchoring in elevation: horizontally only.
+VUNIQ	Automatic anchoring in elevation: vertically only.
+LAUTO	Automatic width between two magnetic points (installation in elevation).
+HAUTO	Automatic height between two magnetic points (installation in elevation).
+ASSORT	Assortment no.
+CLASSE	Component class (Schuler export).
+LSURDIM	Oversizing across the width (Schuler export).
+PSURDIM	Oversizing on depth (Schuler export).
+HSURDIM	Oversizing on the height (Schuler export).
+LCHANT	Cumulated thicknesses of the 2 edges over the width (Schuler export).
+PCHANT	Cumulated thicknesses of the 2 edges on the depth (Schuler export).
+HCHANT	Cumulated thicknesses of the 2 edges on the thickness (Schuler export).
+NCHANT	Edge number, from 1 to 4 (Schuler export).
+NPLAC	Tackle side. 1: interior, 2: exterior (Schuler export).
+ZONEPGN	Zone 1 to 9 of the handle on the front. For a sliding door, 46 is possible for 2 handles (Schuler export).
+PGNT	Indicates that the handle is a drawer handle (Schuler export).
+COLOR	The color code or the rank of the texture in the finish to be used (edge or veneer) (Schuler export).
+COLORINT	The color code or the rank of the texture in the finish to be used (panel) (Schuler export).
+COLOREXT	The color code or the rank of the texture in the finish to be used (panel) (Schuler export).
+NOLIN1	Transparency in percussion of the template segments 1.
+NOLIN2	Transparency in percussion of the template segments 2.
+NOLIN3	Transparency in percussion of the template segments 3.
+NOLIN4	Transparency in percussion of the template segments 4.
+NOLIN5	Transparency in percussion of the template segments 5.
+NOLIN6	Transparency in percussion of the template segments 6.
+NOLIN7	Transparency in percussion of the template segments 7.
+NOLIN8	Transparency in percussion of the template segments 8.
+LC0	For the supplier order, the width is 0.
+LCL	For the supplier order, the width is the catalog width.
+LCP	For the supplier order, the width is the catalog depth.
+LCH	For the supplier order, the width is the catalog height.
+LCLU	For the purchase order, the width is the width of the object.
+LCPU	For the purchase order, the width is the depth of the object.
+LCHU	For the purchase order, the width is the height of the object.
+PC0	For the supplier order, the depth is 0.
+PCL	For the supplier order, the depth is the catalog width.
+PCP	For the supplier order, the depth is the catalog depth.
+PCH	For the supplier order, the depth is the catalog height.
+PCLU	For the purchase order, the depth is the width of the object.
+PCPU	For the purchase order, the depth is the depth of the object.
+PCHU	For the purchase order, the depth is the height of the object.
+HC0	For the supplier order, the height is 0.
+HCL	For the supplier order, the height is the catalog width.
+HCP	For the supplier order, the height is the catalog depth.
+HCH	For the supplier order, the height is the catalog height.
+HCLU	For the purchase order, the height is the width of the object.
+HCPU	For the purchase order, the height is the depth of the object.
+HCHU	For the purchase order, the height is the height of the object.
+METIER	Job. Ex: BUSINESS = 0 for Kitchen furniture. See the [Topics] section in space.ini.
+CALQUE	Layer. Ex: CALQUE = 3 for Low furniture. See the [Kitchen Furniture] section in space.ini.
+METRUB	If the profession determines the item.
+NSA	Not followed by altitude. Unaffected by changes in PT height.
+SA	Altitude tracking. Always sensitive to changes in PT height even if altitude = 0.
+ZH	Specifies that the Z is the altitude of the top of the called block.
+NTRAD	No automatic generation of short and long labels for foreign languages (useful for keeping translations done by hand).
+ECOP	Price inclusive of eco-participation.
+EXTR	Indicates that the dimension is given by an extrusion vector which starts from the 1st point of the contour.
+SREF	For a component, reference not visible in the costing.
+NANCR	No automatic anchoring.
+TANCR	Transparent to automatic anchoring.
+TYPECONSTR	Type of construction. Useful for exporting the debit list in ‘Analyzer’ format.
+STYPE	Block subtype. Example: STYPE = 3 to specify a plan element of type ‘cutaway’.
+DIMCOMP	Indicates that the dimensions of the component do not depend on the dimensions of the object.
+ZCOMP	The altitude of the component is that which is entered in the called block.
+CB1	Block coefficient 1 (from 0 to 254).
+CB2	Block coefficient 2 (from 0 to 254).
+CB3	Block coefficient 3 (from 0 to 254).
+CB4	Block coefficient 4 (from 0 to 254).
+LA	Automatic link by proximity of magnetic points.
+NLIE	Not linked to its host object in encryption.
+FINAPCT	Indicates that the dialog box for the finishes of the object should not be opened after the installation of the object because they will be chosen in an AppliCat.
+VAUTO	The height of the article is automatically determined during installation as a function of the distance between two magnetic points located above and below the article.
+FINTOP	To complete the inheritance of a finish, i.e. a component of n level will take the finish inheritance until it finds the PARAMETER FINTOP of object itself used as component level n-1
+EXPXML	When = 1, the article is exported to the management data export XML file. When = 0, the article is not exported to XML
+HUNIQ	= 1, Automatic elevation anchoring: horizontally only.
+VUNIQ	= 1, Automatic elevation anchoring: vertically only.
+LAUTO	Automatic width between two magnetic points (installation in elevation).
+HAUTO	Automatic height between two magnetic points (installation in elevation).
+PAUTO	Automatic depth between two magnetic points
+LA	Anchor link between magic point
+AAUTOPMIN	Determines the best depth of an item (when it has several depths / to compensate (ex: 300,350,400,450, ...) in the available depth space
+SUBTYPE	Block subtype. -1 =&gt; “None”, 0, 1, 2,…
+RS	Resizable with the mouse in InSitu
