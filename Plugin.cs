@@ -19,37 +19,54 @@ namespace KD.Plugins.MobiscriptEditor
         {
             return OnPluginLoad(unused);
         }
+
+        public bool OnAppQuitAfter(int unused)
+        {
+            return OnPluginUnload(unused);
+        }
+
         public bool OnPluginLoad(int unused)
         {
             _mobiscriptMenuItem = _appli.InsertMobiscriptMenuItem(new Appli.MenuItemInsertionInfo()
-            {
-                ClassName = nameof(Plugin),
-                DllFilenameWithoutPath = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location),
-                KeyCode = Appli.MenuKeyCode.E,
-                KeyModifiers = Appli.MenuKeyModifiers.Control,
-                MethodName = nameof(ShowEditorInMobiscript),
-                Text = $"{Properties.Resources.MenuItemText}\tCtrl+E",
-            },
-            Appli.MobiscriptMenuItem.StandardId.Edit_SelectAll,
-            Appli.MenuItemInsertionPosition.After);
+                {
+                    ClassName = nameof(Plugin),
+                    DllFilenameWithoutPath = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+                    KeyCode = Appli.MenuKeyCode.E,
+                    KeyModifiers = Appli.MenuKeyModifiers.Control,
+                    MethodName = nameof(ShowEditorInMobiscript),
+                    Text = $"{Properties.Resources.MenuItemText}\tCtrl+E",
+                },
+                Appli.MobiscriptMenuItem.StandardId.Edit_SelectAll,
+                Appli.MenuItemInsertionPosition.After);
 
-            _menuItem = _appli.InsertMenuItem(new Appli.MenuItemInsertionInfo()
-            {
-                ClassName = nameof(Plugin),
-                DllFilenameWithoutPath = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location),
-                KeyCode = Appli.MenuKeyCode.E,
-                KeyModifiers = Appli.MenuKeyModifiers.Control | Appli.MenuKeyModifiers.Menu | Appli.MenuKeyModifiers.Shift,
-                MethodName = nameof(ShowEditor),
-                Text = $"{Properties.Resources.MenuItemText}\tCtrl+Alt+Shift+E",
-            },
-             Appli.MenuItem.StandardId.Help_SendLogFiles,
-             Appli.MenuItemInsertionPosition.Before);
+            if(_menuItem == null)
+                _menuItem = _appli.InsertMenuItem(new Appli.MenuItemInsertionInfo()
+                    {
+                        ClassName = nameof(Plugin),
+                        DllFilenameWithoutPath = System.IO.Path.GetFileName(System.Reflection.Assembly.GetExecutingAssembly().Location),
+                        KeyCode = Appli.MenuKeyCode.E,
+                        KeyModifiers = Appli.MenuKeyModifiers.Control | Appli.MenuKeyModifiers.Menu | Appli.MenuKeyModifiers.Shift,
+                        MethodName = nameof(ShowEditor),
+                        Text = $"{Properties.Resources.MenuItemText}\tCtrl+Alt+Shift+E",
+                    },
+                    Appli.MenuItem.StandardId.Help_SendLogFiles,
+                    Appli.MenuItemInsertionPosition.Before);
 
             return true;
         }
+
         public bool OnPluginUnload(int unused)
         {
-            _appli.RemoveMenuItem(_mobiscriptMenuItem);
+            if(_mobiscriptMenuItem != null)
+            {
+                _appli.RemoveMenuItem(_mobiscriptMenuItem);
+                _mobiscriptMenuItem = null;
+            }
+            if(_menuItem != null)
+            {
+                _appli.RemoveMenuItem(_menuItem);
+                _menuItem = null;
+            }
 
             return true;
         }
