@@ -22,7 +22,14 @@ namespace KD.Plugins.MobiscriptEditor
 
         public bool OnAppQuitAfter(int unused)
         {
-            return OnPluginUnload(unused);
+            try
+            {
+                return OnPluginUnload(unused);
+            }
+            catch
+            {
+                return true;
+            }
         }
 
         public bool OnPluginLoad(int unused)
