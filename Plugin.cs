@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KD.SDK2;
+using System;
 using System.Windows;
 using System.Windows.Interop;
-using KD.SDK2;
 
 namespace KD.Plugins.MobiscriptEditor
 {
@@ -22,14 +18,7 @@ namespace KD.Plugins.MobiscriptEditor
 
         public bool OnAppQuitAfter(int unused)
         {
-            try
-            {
-                return OnPluginUnload(unused);
-            }
-            catch
-            {
-                return true;
-            }
+            return OnPluginUnload(unused);
         }
 
         public bool OnPluginLoad(int unused)
@@ -64,15 +53,21 @@ namespace KD.Plugins.MobiscriptEditor
 
         public bool OnPluginUnload(int unused)
         {
-            if(_mobiscriptMenuItem != null)
+            try
             {
-                _appli.RemoveMenuItem(_mobiscriptMenuItem);
-                _mobiscriptMenuItem = null;
+                if (_mobiscriptMenuItem != null)
+                {
+                    _appli.RemoveMenuItem(_mobiscriptMenuItem);
+                    _mobiscriptMenuItem = null;
+                }
+                if (_menuItem != null)
+                {
+                    _appli.RemoveMenuItem(_menuItem);
+                    _menuItem = null;
+                }
             }
-            if(_menuItem != null)
+            catch
             {
-                _appli.RemoveMenuItem(_menuItem);
-                _menuItem = null;
             }
 
             return true;
@@ -87,6 +82,8 @@ namespace KD.Plugins.MobiscriptEditor
 
             var wih = new WindowInteropHelper(mainWindow);
             wih.Owner = _appli.GetCallParamsInfoDirect(unused).WindowHandle;
+
+            RestoreWindowSettings(mainWindow);
 
             if (mainWindow.ShowDialog() == true)
             {
@@ -109,18 +106,56 @@ namespace KD.Plugins.MobiscriptEditor
                 return false;
             }
 
-            var mainWindow = new MainWindow() { Text = catalog.ActiveRow.Cells[1] };
+            var mainWindow = new MainWindow() {
+                Text = catalog.ActiveRow.Cells[1],
+            };
+            
+            RestoreWindowSettings(mainWindow);
 
             var wih = new WindowInteropHelper(mainWindow);
             wih.Owner = _appli.GetCallParamsInfoDirect(unused).WindowHandle;
 
-            if (mainWindow.ShowDialog() == true)
-            {
-                catalog.ActiveRow.Cells[1] = mainWindow.Text;
-                return true;
-            };
+            bool dialogResult = mainWindow.ShowDialog() ?? false;
 
-            return false;
+            if (dialogResult == true)
+                catalog.ActiveRow.Cells[1] = mainWindow.Text;
+
+            SaveWindowSettings(mainWindow);
+
+            return dialogResult;
+        }
+
+        private void SaveWindowSettings(MainWindow mainWindow)
+        {
+            _appli.WriteIniValue(
+                "space.ini", typeof(Plugin).Namespace, "FontSize", mainWindow.EditorFontSize);
+
+            _appli.WriteIniValue(
+                "space.ini", typeof(Plugin).Namespace, "WindowWidth", mainWindow.Width);
+
+            _appli.WriteIniValue(
+                "space.ini", typeof(Plugin).Namespace, "WindowHeight", mainWindow.Height);
+        }
+
+        private void RestoreWindowSettings(MainWindow mainWindow)
+        {
+            double editorFontSize;
+            if (!_appli.TryReadIniValue("space.ini", typeof(Plugin).Namespace, "FontSize", out editorFontSize))
+            {
+                if (_appli.TryReadIniValue("space.ini", "InSitu", "MobiscriptFontSizeDelta", out editorFontSize))
+                    editorFontSize += 8;
+                else
+                    editorFontSize = 12.0;
+            }
+            mainWindow.EditorFontSize = editorFontSize;
+
+            double windowWidth;
+            if (_appli.TryReadIniValue("space.ini", typeof(Plugin).Namespace, "WindowWidth", out windowWidth))
+                mainWindow.Width = windowWidth;
+
+            double windowHeight;
+            if (_appli.TryReadIniValue("space.ini", typeof(Plugin).Namespace, "WindowHeight", out windowHeight))
+                mainWindow.Height = windowHeight;
         }
     }
 }

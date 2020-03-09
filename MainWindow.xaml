@@ -11,7 +11,10 @@
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
         Title="{x:Static props:Resources.MainWindowTitle}" 
-        Height="420" Width="740">
+        Height="420" Width="740"
+        PreviewMouseWheel="mainWindow_PreviewMouseWheel"
+        SizeChanged="mainWindow_SizeChanged"
+        LocationChanged="mainWindow_LocationChanged">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Content" Value="{Binding Command.Text, RelativeSource={RelativeSource Self}}"/>

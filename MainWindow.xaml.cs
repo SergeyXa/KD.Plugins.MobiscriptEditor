@@ -33,6 +33,7 @@ namespace KD.Plugins.MobiscriptEditor
 
         public string Text { get => textEditor.Text; set => textEditor.Text = value; }
 
+        public double EditorFontSize { get => textEditor.FontSize; set => textEditor.FontSize = value; }
 
         private void Save_Executed(object sender, ExecutedRoutedEventArgs e)
         {
@@ -42,6 +43,25 @@ namespace KD.Plugins.MobiscriptEditor
         private void Close_Executed(object sender, ExecutedRoutedEventArgs e)
         {
             DialogResult = false;
+        }
+
+        private void mainWindow_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (Keyboard.IsKeyDown(Key.LeftCtrl) || Keyboard.IsKeyDown(Key.RightCtrl))
+            {
+                EditorFontSize += Math.Sign(e.Delta);
+                e.Handled = true;
+            }
+        }
+
+        private void mainWindow_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+
+        }
+
+        private void mainWindow_LocationChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
