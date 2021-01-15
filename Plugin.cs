@@ -87,6 +87,7 @@ namespace KD.Plugins.MobiscriptEditor
 
             if (mainWindow.ShowDialog() == true)
             {
+                _appli.Scene.UndoStack.AddState(Scene.UndoStateType.Attributes);
                 _appli.Scene.ActiveObject.Script = mainWindow.Text;
                 return true;
             };
