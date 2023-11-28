@@ -101,25 +101,37 @@ namespace KD.Plugins.MobiscriptEditor
 
             catalog.UseMobiscriptCatalog();
 
-            if(catalog.ActiveTable.Type != Catalog.TableType.Blocks)
-            {
-                MessageBox.Show(Properties.Resources.WrongTableMessageText);
-                return false;
-            }
+            var mainWindow = new MainWindow();
 
-            var mainWindow = new MainWindow() {
-                Text = catalog.ActiveRow.Cells[1],
-            };
-            
             RestoreWindowSettings(mainWindow);
 
             var wih = new WindowInteropHelper(mainWindow);
             wih.Owner = _appli.GetCallParamsInfoDirect(unused).WindowHandle;
 
+            Action<string> applyTextAction = null;
+
+            if (catalog.ActiveTable.Type == Catalog.TableType.Blocks)
+            {
+                mainWindow.SyntaxMode = SyntaxMode.BlockScript;
+                mainWindow.Text = catalog.ActiveRow.Cells[1];
+                applyTextAction = (text) => catalog.ActiveRow.Cells[1] = text;
+            }
+            else if (catalog.ActiveTable.Type == Catalog.TableType.ApplicatRules)
+            {
+                mainWindow.SyntaxMode = SyntaxMode.AppliCatRuleScript;
+                mainWindow.Text = catalog.ActiveRow.Cells[3];
+                applyTextAction = (text) => catalog.ActiveRow.Cells[3] = text;
+            }
+            else
+            {
+                MessageBox.Show(Properties.Resources.WrongTableMessageText);
+                return false;
+            }
+
             bool dialogResult = mainWindow.ShowDialog() ?? false;
 
             if (dialogResult == true)
-                catalog.ActiveRow.Cells[1] = mainWindow.Text;
+                applyTextAction(mainWindow.Text);
 
             SaveWindowSettings(mainWindow);
 

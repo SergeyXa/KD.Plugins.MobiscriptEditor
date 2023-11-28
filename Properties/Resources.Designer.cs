@@ -19,7 +19,7 @@ namespace KD.Plugins.MobiscriptEditor.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -61,15 +61,6 @@ namespace KD.Plugins.MobiscriptEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel.
-        /// </summary>
-        public static string CancelButtonTitle {
-            get {
-                return ResourceManager.GetString("CancelButtonTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to @VAR	allows to define a variable name and its value. @var (Variable name = 100)
         ///@DEC	designates the 2D catalog CAT2D_GENDEC in a model script. @DEC (RED = CHEV4X)
         ///@COMMENT	example @comment (Hello every body)
@@ -79,9 +70,94 @@ namespace KD.Plugins.MobiscriptEditor.Properties {
         ///@URL	to call a url on a block in InSitu
         ///@2D	Name of a 2D to use: code of a block, name of a 2D entity or name of a wmf o [rest of string was truncated]&quot;;.
         /// </summary>
-        public static string Keywords {
+        public static string BlockScriptKeywords {
             get {
-                return ResourceManager.GetString("Keywords", resourceCulture);
+                return ResourceManager.GetString("BlockScriptKeywords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string CancelButtonTitle {
+            get {
+                return ResourceManager.GetString("CancelButtonTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to abstract
+        ///arguments
+        ///await
+        ///boolean
+        ///break
+        ///byte
+        ///case
+        ///catch
+        ///char
+        ///class
+        ///const
+        ///continue
+        ///debugger
+        ///default
+        ///delete
+        ///do
+        ///double
+        ///else
+        ///enum
+        ///eval
+        ///export
+        ///extends
+        ///false
+        ///final
+        ///finally
+        ///float
+        ///for
+        ///function
+        ///goto
+        ///if
+        ///implements
+        ///import
+        ///in
+        ///instanceof
+        ///int
+        ///interface
+        ///let
+        ///long
+        ///native
+        ///new
+        ///null
+        ///package
+        ///private
+        ///protected
+        ///public
+        ///return
+        ///short
+        ///static
+        ///super
+        ///switch
+        ///synchronized
+        ///this
+        ///throw
+        ///throws
+        ///transient
+        ///true
+        ///try
+        ///typeof
+        ///var
+        ///void
+        ///volatile
+        ///while
+        ///with
+        ///yield
+        ///Array
+        ///Date
+        ///eval
+        ///function [rest of string was truncated]&quot;;.
+        /// </summary>
+        public static string JavaScriptKeywords {
+            get {
+                return ResourceManager.GetString("JavaScriptKeywords", resourceCulture);
             }
         }
         
@@ -113,7 +189,7 @@ namespace KD.Plugins.MobiscriptEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The Mobiscript editor can only be used in the Blocks table..
+        ///   Looks up a localized string similar to The Mobiscript editor can only be used in the Blocks, or Applicats tables..
         /// </summary>
         public static string WrongTableMessageText {
             get {

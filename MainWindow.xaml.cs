@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 
 using KD.SDK2;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace KD.Plugins.MobiscriptEditor
 {
@@ -18,18 +19,29 @@ namespace KD.Plugins.MobiscriptEditor
     /// </summary>
     public partial class MainWindow : Window
     {
-        CompletionManager _completionManager;
-        TooltipManager _tooltipManager;
         public MainWindow()
         {
             InitializeComponent();
-
-            textEditor.SyntaxHighlighting = new MobiscriptHighlightingDefinition();
-
-            _completionManager = new CompletionManager(textEditor, MobiscriptHighlightingDefinition.Keywords);
-            _tooltipManager = new TooltipManager(textEditor, MobiscriptHighlightingDefinition.Keywords);
         }
 
+        public SyntaxMode SyntaxMode {
+            get => _syntaxMode_private;
+            set
+            {
+                _syntaxMode_private = value;
+                if(value == SyntaxMode.AppliCatRuleScript)
+                {
+                    textEditor.SyntaxHighlighting =
+                        new ApplicatRuleScriptHighlightingDefinition();
+                }
+                else
+                {
+                    textEditor.SyntaxHighlighting = 
+                        new BlockScriptHighlightingDefinition();
+                }
+            }
+        }
+        private SyntaxMode _syntaxMode_private;
 
         public string Text { get => textEditor.Text; set => textEditor.Text = value; }
 
