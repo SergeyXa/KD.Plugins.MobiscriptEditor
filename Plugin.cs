@@ -78,7 +78,10 @@ namespace KD.Plugins.MobiscriptEditor
             if (!_appli.Scene.IsLoaded || _appli.Scene.ActiveObject == null)
                 return false;
 
-            var mainWindow = new MainWindow() { Text = _appli.Scene.ActiveObject.Script };
+            var mainWindow = new MainWindow {
+                SyntaxMode = SyntaxMode.BlockScript,
+                Text = _appli.Scene.ActiveObject.Script 
+            };
 
             var wih = new WindowInteropHelper(mainWindow);
             wih.Owner = _appli.GetCallParamsInfoDirect(unused).WindowHandle;
